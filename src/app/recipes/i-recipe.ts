@@ -1,5 +1,5 @@
 export interface IRecipe {
-    idMeal:                      null | string;
+    idmeal:                      null | string;
     strMeal:                     null | string;
     strDrinkAlternate:           null | string;
     strCategory:                 null | string;
@@ -48,11 +48,5 @@ export interface IRecipe {
     strMeasure18:                null | string;
     strMeasure19:                null | string;
     strMeasure20:                null | string;
-    strSource:                   null | string;
     strImageSource:              null | string;
-    strCreativeCommonsConfirmed: null | string;
-    dateModified:                null | string;
-    strStorageimg:               null | string;
-    idCategory:                  null | null | string;
-    idIngredients:              (string | null)[];
 }

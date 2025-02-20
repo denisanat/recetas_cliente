@@ -49,6 +49,35 @@
 						>Create</a
 					>
 				</li>
+
+				<li class="nav-item">
+					<a
+						class="nav-link"
+						[routerLink]="['login']"
+						[routerLinkActive]="['active']"
+						>Login</a
+					>
+				</li>
+
+				<li class="nav-item">
+					<a
+						class="nav-link"
+						[routerLink]="['register']"
+						[routerLinkActive]="['active']"
+						>Register</a
+					>
+				</li>
+
+				@if (usuarioEmail) {
+					<div>
+						<p>Bienvenido, <strong (click)="onLogout()" style="cursor: pointer; color: blue">{{ usuarioEmail }}</strong></p>
+					</div>
+				} @else {
+					<p>No estás logueado</p>
+				}
+				
+				  
+				
 			</ul>
 		</div>
 	</div>

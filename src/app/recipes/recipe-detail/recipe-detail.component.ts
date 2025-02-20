@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IRecipe } from '../i-recipe';
 import { RouterLink } from '@angular/router';
-import { recipes } from '../recipes-list/recipes_exemples';
 
 @Component({
 	selector: 'app-recipe-detail',
@@ -12,6 +11,5 @@ import { recipes } from '../recipes-list/recipes_exemples';
 export class RecipeDetailComponent {
 	@Input('id') recipeID?: string;
 
-	public recipe: IRecipe = recipes[0];
 	//public ingredients: Ingredient[] = [];
 }

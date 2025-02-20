@@ -1,9 +1,19 @@
 <div class="container">
 	<div class="row g-4 mt-1">
-		@for (recipe of recipes; track $index) {
-		<div class="col">
-			<app-recipe-card [recipe]="recipe"></app-recipe-card>
+		<div class="col-12">
+			<input 
+				type="text" 
+				[(ngModel)]="searchTerm"
+				(ngModelChange)="onSearchChange()"
+				placeholder="Buscar receta"
+				class="form-control"
+				/>
 		</div>
+		
+		@for (recipe of filteredRecipes; track $index) {
+			<div class="col">
+				<app-recipe-card [recipe]="recipe"></app-recipe-card>
+			</div>
 		}
 	</div>
 </div>

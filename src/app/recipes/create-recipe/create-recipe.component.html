@@ -1,1 +1,89 @@
-<p>create-recipe works!</p>
+<h2>Crear Nueva Receta</h2>
+
+<form (ngSubmit)="crearReceta()" #recetaForm="ngForm">
+
+  <div>
+    <label for="idmeal">Id de la receta:</label>
+    <input
+      type="text"
+      id="idmeal"
+      [(ngModel)]="receta.idmeal"
+      name="strMeal"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="strMeal">Nombre de la receta:</label>
+    <input
+      type="text"
+      id="strMeal"
+      [(ngModel)]="receta.strMeal"
+      name="strMeal"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="strCategory">Categoría:</label>
+    <input
+      type="text"
+      id="strCategory"
+      [(ngModel)]="receta.strCategory"
+      name="strCategory"
+    />
+  </div>
+
+  <div>
+    <label for="strArea">Área:</label>
+    <input
+      type="text"
+      id="strArea"
+      [(ngModel)]="receta.strArea"
+      name="strArea"
+    />
+  </div>
+
+  <div>
+    <label for="strInstructions">Instrucciones:</label>
+    <textarea
+      id="strInstructions"
+      [(ngModel)]="receta.strInstructions"
+      name="strInstructions"
+    ></textarea>
+  </div>
+
+  <div>
+    <label for="strMealThumb">Imagen URL:</label>
+    <input
+      type="text"
+      id="strMealThumb"
+      [(ngModel)]="receta.strMealThumb"
+      name="strMealThumb"
+    />
+  </div>
+
+  <div>
+    <label for="strIngredient1">Ingrediente 1:</label>
+    <input
+      type="text"
+      id="strIngredient1"
+      [(ngModel)]="receta.strIngredient1"
+      name="strIngredient1"
+    />
+  </div>
+
+  <div>
+    <label for="strMeasure1">Cantidad 1:</label>
+    <input
+      type="text"
+      id="strMeasure1"
+      [(ngModel)]="receta.strMeasure1"
+      name="strMeasure1"
+    />
+  </div>
+
+  <!-- Puedes ir añadiendo más ingredientes y cantidades igual que arriba -->
+
+  <button type="submit">Crear Receta</button>
+</form>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from '../../environments/environment';
-import { Observable, from } from 'rxjs';
+import { Observable, from, map } from 'rxjs';
 import { IRecipe } from '../recipes/i-recipe';
 
 @Injectable({
@@ -37,4 +37,56 @@ export class SupabaseService {
 	getMeals(): Observable<IRecipe[]> {
 		return this.getDataObservable('meals');
 	}
+
+	getMealsSearch(searchTerm: string = '') {
+		return from(
+			this.supabase
+				.from('meals')
+				.select('*')
+				.ilike('strMeal', `%${searchTerm}%`)
+		).pipe(
+			map(response => response.data)
+		);
+	}
+
+	// crear una receta nueva
+	async crearReceta(receta: IRecipe) {
+		const { idmeal, ...resto } = receta;
+  		const recetaConIdMinusc = {...resto, idmeal: idmeal};
+
+  		const { data, error } = await this.supabase.from('meals').insert([recetaConIdMinusc]);
+
+		if (error) throw error;
+		return data;
+	}
+
+	// función para loguearse
+	async login(email: string, password: string) {
+		const { data, error } = await this.supabase.auth.signInWithPassword({
+		  email,
+		  password,
+		});
+	
+		if (error) throw error;
+		return data;
+	  }
+
+	  // funcion para registrarse
+	  async register(email: string, password: string) {
+		const { data, error } = await this.supabase.auth.signUp({
+		  email,
+		  password,
+		});
+	
+		if (error) throw error;
+		return data;
+	  }
+
+	  async logout() {
+		await this.supabase.auth.signOut();
+	  }
+	
+	  getUser() {
+		return this.supabase.auth.getUser();
+	  }
 }
