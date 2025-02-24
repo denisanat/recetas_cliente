@@ -89,4 +89,10 @@ export class SupabaseService {
 	  getUser() {
 		return this.supabase.auth.getUser();
 	  }
+
+	  // Verificar si hay un usuario logueado
+  	async isAuthenticated(): Promise<boolean> {
+		const { data } = await this.supabase.auth.getUser();
+		return !!data?.user;
+  	}
 }

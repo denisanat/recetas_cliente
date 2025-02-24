@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone } from '@angular/core';
 import { SupabaseService } from '../../service/supabase.service';
 import { FormsModule } from '@angular/forms';
 
@@ -13,15 +13,14 @@ export class LoginComponent {
 	email: string = '';
 	password: string = '';
 
-	constructor(private supabase: SupabaseService) {}
+	constructor(private supabase: SupabaseService, private cd: ChangeDetectorRef) {}
 
 	async onLogin() {
 		try {
 			const data = await this.supabase.login(this.email, this.password);
-			console.log('Login exitoso', data);
-			alert('Login exitoso');
+			alert('Login exitoso (F5 para actualizar vista)');
+			this.cd.detectChanges();
 		} catch (error: any) {
-			console.error('Error en el login:', error.message);
 			alert(`Error: ${error.message}`);
 		}
 	}
